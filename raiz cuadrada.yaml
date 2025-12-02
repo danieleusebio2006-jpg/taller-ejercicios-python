@@ -1,0 +1,30 @@
+def raiz_cuadrada_aproximada(n, tolerancia=0.0001):
+  """
+  Calcula la raíz cuadrada de un número utilizando el método de Newton-Raphson.
+
+  Args:
+    n: El número del que se quiere calcular la raíz cuadrada.
+    tolerancia: La tolerancia para la precisión del resultado.
+
+  Returns:
+    La raíz cuadrada aproximada de n.
+  """
+
+  if n < 0:
+    return "Error: No se puede calcular la raíz cuadrada de un número negativo."
+
+  raiz = n / 2  # Estimación inicial
+  while True:
+    nueva_raiz = (raiz + n / raiz) / 2
+    if abs(nueva_raiz - raiz) < tolerancia:
+      return nueva_raiz
+    raiz = nueva_raiz
+
+# Solicitar el número al usuario
+numero = float(input("Ingresa un número para calcular su raíz cuadrada: "))
+
+# Calcular la raíz cuadrada
+resultado = raiz_cuadrada_aproximada(numero)
+
+# Mostrar el resultado
+print("La raíz cuadrada de", numero, "es aproximadamente:", resultado)
